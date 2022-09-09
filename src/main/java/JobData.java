@@ -93,21 +93,21 @@ public class JobData {
     public static ArrayList<HashMap<String, String>> findByValue(String value) {
         // load data, if not already loaded
         loadData();
-        // ArrayList
-        ArrayList<HashMap<String, String>> allJobs = JobData.findAll();
-        ArrayList<HashMap<String, String>> searchMatches = new ArrayList<>();
-
-        for (HashMap<String, String> row: allJobs) {
-            for (Map.Entry<String, String> column: row.entrySet()) {
-                if (column.getValue().toUpperCase().contains(value)) {
-                    if (Arrays.asList(searchMatches).contains(row)) {
-                    }
-                    searchMatches.add(row);
+        ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
+        // TODO - implement this method
+        for (HashMap<String, String> job : allJobs) {
+            for (String details: job.values()) {
+                if (details.toLowerCase().contains(value.toLowerCase()) && !jobs.contains(job)){
+                    jobs.add(job);
                 }
+
             }
         }
-        return searchMatches;
+        return jobs;
+
     }
+
+
 
 
     /**
